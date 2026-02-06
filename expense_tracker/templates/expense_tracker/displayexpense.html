@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Your Expenses</h2>
+
+    <form method="get">
+    <input type="radio" name="sortby" id="sortbydate" value="date" >
+    <label for="sortbydate">Sort by Added Date</label>
+    <input type="radio" name="sortby" id="sortbycategory" value="category">
+    <label for="sortbyname">Sort by Category</label>
+    <input type="radio" name="sortby" id="sortbyamount" value="amount" >
+    <label for="sortbyamount">Sort by Amount</label><br><br>
+
+    <button type="submit"> SORT </button><br>
+    </form>
+    
+    {% if expenses %}
+        <ul>
+        {%for expense in expenses%}
+            <li>-- {{expense.exp_category}}  --   {{expense.exp_amount}}   --   {{expense.date}}</li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No expense found.</p>
+    {% endif %}
+
+    <h3>Monthly Expense</h3>
+    <p>Total: {{totalexpense}}</p> 
+    
+    <a href="{% url 'expense_tracker:home' %}">back to home </a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Enter your Expense</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label >Expense Category: </label>
+        <input type="text" name="category" required><br>
+
+        <label >Expense Amount: </label>
+        <input type="number" name="amount" required ><br>
+
+        <button type="submit">ADD</button>
+    </form>
+
+    <a href="{% url 'expense_tracker:home' %}">back to home </a>
+    <a href="{% url 'expense_tracker:logout' %}">Logout </a>
+</body>
+</html>
